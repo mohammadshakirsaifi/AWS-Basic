@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My AWS Blog - Scalable Personal Website</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #667eea;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: #667eea;
+        }
+        
+        main {
+            margin-top: 80px;
+            padding: 2rem 0;
+        }
+        
+        .hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 4rem 0;
+            border-radius: 20px;
+            margin-bottom: 3rem;
+            text-align: center;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+        
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            animation: fadeInUp 1s ease;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            animation: fadeInUp 1s ease 0.2s both;
+        }
+        
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            padding: 2rem 0;
+        }
+        
+        .feature-card {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            text-align: center;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+        }
+        
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .feature-card h3 {
+            color: #667eea;
+            margin-bottom: 1rem;
+        }
+        
+        .aws-badge {
+            display: inline-block;
+            background: #FF9900;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            font-weight: bold;
+            margin-top: 2rem;
+        }
+        
+        .blog-posts {
+            background: white;
+            border-radius: 20px;
+            padding: 3rem;
+            margin-top: 3rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .blog-posts h2 {
+            color: #333;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+        
+        .post-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+        
+        .post-card {
+            border: 1px solid #eee;
+            border-radius: 10px;
+            overflow: hidden;
+            transition: transform 0.3s;
+        }
+        
+        .post-card:hover {
+            transform: translateY(-3px);
+        }
+        
+        .post-image {
+            height: 200px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2rem;
+        }
+        
+        .post-content {
+            padding: 1.5rem;
+        }
+        
+        .post-title {
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            color: #333;
+        }
+        
+        .post-meta {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+        
+        .post-excerpt {
+            color: #777;
+            margin-bottom: 1rem;
+        }
+        
+        .read-more {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        
+        .server-info {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 1rem;
+            margin-top: 2rem;
+            text-align: center;
+            font-family: monospace;
+        }
+        
+        footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 4rem;
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">☁️ AWS Blog</div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#features">Features</a></li>
+                <li><a href="#blog">Blog</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <main>
+        <div class="container">
+            <section id="home" class="hero">
+                <h1>Welcome to My AWS-Powered Blog</h1>
+                <p>Scalable • Secure • Serverless • Global</p>
+                <div class="aws-badge">Deployed on AWS Cloud</div>
+            </section>
+            
+            <section id="features" class="features">
+                <div class="feature-card">
+                    <div class="feature-icon">🚀</div>
+                    <h3>High Availability</h3>
+                    <p>Load balanced across multiple AZs with Application Load Balancer</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">🔒</div>
+                    <h3>Enterprise Security</h3>
+                    <p>WAF protection, KMS encryption, and IAM best practices</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">📊</div>
+                    <h3>Real-time Monitoring</h3>
+                    <p>CloudWatch alarms and detailed logging for complete visibility</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">⚡</div>
+                    <h3>Serverless Processing</h3>
+                    <p>Lambda functions for image resizing and background tasks</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">🌍</div>
+                    <h3>Global Delivery</h3>
+                    <p>CloudFront CDN for lightning-fast content delivery</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">🔄</div>
+                    <h3>Infrastructure as Code</h3>
+                    <p>Full CloudFormation template for reproducible deployments</p>
+                </div>
+            </section>
+            
+            <section id="blog" class="blog-posts">
+                <h2>Latest Blog Posts</h2>
+                <div class="post-grid">
+                    <article class="post-card">
+                        <div class="post-image">📝</div>
+                        <div class="post-content">
+                            <h3 class="post-title">Deploying Scalable Apps on AWS</h3>
+                            <div class="post-meta">Posted on Feb 15, 2025 • 5 min read</div>
+                            <p class="post-excerpt">Learn how to leverage AWS services like VPC, EC2, and ALB for high availability...</p>
+                            <a href="#" class="read-more">Read More →</a>
+                        </div>
+                    </article>
+                    
+                    <article class="post-card">
+                        <div class="post-image">🔐</div>
+                        <div class="post-content">
+                            <h3 class="post-title">AWS Security Best Practices</h3>
+                            <div class="post-meta">Posted on Feb 12, 2025 • 7 min read</div>
+                            <p class="post-excerpt">Implementing WAF, KMS encryption, and IAM policies for robust security...</p>
+                            <a href="#" class="read-more">Read More →</a>
+                        </div>
+                    </article>
+                    
+                    <article class="post-card">
+                        <div class="post-image">⚡</div>
+                        <div class="post-content">
+                            <h3 class="post-title">Getting Started with Serverless</h3>
+                            <div class="post-meta">Posted on Feb 10, 2025 • 4 min read</div>
+                            <p class="post-excerpt">Building event-driven architectures with Lambda, SQS, and SNS...</p>
+                            <a href="#" class="read-more">Read More →</a>
+                        </div>
+                    </article>
+                </div>
+            </section>
+            
+            <div class="server-info" id="server-info">
+                Loading server information...
+            </div>
+        </div>
+    </main>
+    
+    <footer>
+        <p>&copy; 2025 My AWS Blog. All rights reserved.</p>
+        <p style="margin-top: 1rem; opacity: 0.8;">Powered by AWS EC2, RDS, S3, Lambda, and CloudFront</p>
+    </footer>
+    
+    <script>
+        // Display server information
+        fetch('/server-info.php')
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('server-info').innerHTML = `
+                    <strong>Server Information:</strong><br>
+                    Hostname: ${data.hostname}<br>
+                    Server IP: ${data.server_ip}<br>
+                    Client IP: ${data.client_ip}<br>
+                    Server Time: ${data.server_time}<br>
+                    PHP Version: ${data.php_version}<br>
+                    Database Status: ${data.db_status} (Connected to RDS MySQL)
+                `;
+            })
+            .catch(error => {
+                document.getElementById('server-info').innerHTML = 'Server information unavailable';
+            });
+    </script>
+</body>
+</html>

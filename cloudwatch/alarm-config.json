@@ -1,0 +1,114 @@
+{
+    "alarms": [
+        {
+            "alarmName": "Blog-High-CPU",
+            "alarmDescription": "Alert when CPU exceeds 80%",
+            "metricName": "CPUUtilization",
+            "namespace": "AWS/EC2",
+            "statistic": "Average",
+            "period": 300,
+            "evaluationPeriods": 2,
+            "threshold": 80,
+            "comparisonOperator": "GreaterThanThreshold"
+        },
+        {
+            "alarmName": "Blog-High-Memory",
+            "alarmDescription": "Alert when memory usage exceeds 85%",
+            "metricName": "mem_used_percent",
+            "namespace": "CWAgent",
+            "statistic": "Average",
+            "period": 300,
+            "evaluationPeriods": 2,
+            "threshold": 85,
+            "comparisonOperator": "GreaterThanThreshold"
+        },
+        {
+            "alarmName": "Blog-ALB-5XX-Errors",
+            "alarmDescription": "Alert when ALB returns 5XX errors",
+            "metricName": "HTTPCode_ELB_5XX_Count",
+            "namespace": "AWS/ApplicationELB",
+            "statistic": "Sum",
+            "period": 300,
+            "evaluationPeriods": 2,
+            "threshold": 10,
+            "comparisonOperator": "GreaterThanThreshold"
+        },
+        {
+            "alarmName": "Blog-ALB-4XX-Errors",
+            "alarmDescription": "Alert when ALB returns many 4XX errors",
+            "metricName": "HTTPCode_ELB_4XX_Count",
+            "namespace": "AWS/ApplicationELB",
+            "statistic": "Sum",
+            "period": 300,
+            "evaluationPeriods": 2,
+            "threshold": 50,
+            "comparisonOperator": "GreaterThanThreshold"
+        },
+        {
+            "alarmName": "Blog-High-Latency",
+            "alarmDescription": "Alert when response time exceeds 2 seconds",
+            "metricName": "TargetResponseTime",
+            "namespace": "AWS/ApplicationELB",
+            "statistic": "Average",
+            "period": 300,
+            "evaluationPeriods": 2,
+            "threshold": 2,
+            "comparisonOperator": "GreaterThanThreshold"
+        },
+        {
+            "alarmName": "Blog-RDS-Connections",
+            "alarmDescription": "Alert when database connections are high",
+            "metricName": "DatabaseConnections",
+            "namespace": "AWS/RDS",
+            "statistic": "Average",
+            "period": 300,
+            "evaluationPeriods": 2,
+            "threshold": 100,
+            "comparisonOperator": "GreaterThanThreshold"
+        },
+        {
+            "alarmName": "Blog-RDS-FreeStorage",
+            "alarmDescription": "Alert when database storage is low",
+            "metricName": "FreeStorageSpace",
+            "namespace": "AWS/RDS",
+            "statistic": "Average",
+            "period": 300,
+            "evaluationPeriods": 2,
+            "threshold": 5000000000,
+            "comparisonOperator": "LessThanThreshold"
+        },
+        {
+            "alarmName": "Blog-SQS-QueueDepth",
+            "alarmDescription": "Alert when SQS queue depth is high",
+            "metricName": "ApproximateNumberOfMessagesVisible",
+            "namespace": "AWS/SQS",
+            "statistic": "Average",
+            "period": 300,
+            "evaluationPeriods": 2,
+            "threshold": 100,
+            "comparisonOperator": "GreaterThanThreshold"
+        },
+        {
+            "alarmName": "Blog-WAF-BlockedRequests",
+            "alarmDescription": "Alert when WAF blocks many requests",
+            "metricName": "BlockedRequests",
+            "namespace": "AWS/WAFV2",
+            "statistic": "Sum",
+            "period": 300,
+            "evaluationPeriods": 2,
+            "threshold": 100,
+            "comparisonOperator": "GreaterThanThreshold"
+        },
+        {
+            "alarmName": "Blog-Lambda-Errors",
+            "alarmDescription": "Alert when Lambda functions error",
+            "metricName": "Errors",
+            "namespace": "AWS/Lambda",
+            "statistic": "Sum",
+            "period": 300,
+            "evaluationPeriods": 2,
+            "threshold": 1,
+            "comparisonOperator": "GreaterThanThreshold"
+        }
+    ]
+}

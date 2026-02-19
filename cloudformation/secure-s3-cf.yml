@@ -1,0 +1,149 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: CloudFormation template to create a secure S3 bucket for the blog assignment with versioning, encryption, and public access blocking.
+
+Parameters:
+  EnvironmentName:
+    Description: Environment name (e.g., dev, prod)
+    Type: String
+    Default: dev
+    AllowedValues:
+      - dev
+      - staging
+      - prod
+  
+  BucketNamePrefix:
+    Description: Prefix for the S3 bucket name (will be combined with environment)
+    Type: String
+    Default: myblog-static-assets
+
+Resources:
+  # S3 Bucket for Static Assets
+  BlogStaticBucket:
+    Type: AWS::S3::Bucket
+    DeletionPolicy: Retain
+    Properties:
+      BucketName: !Sub ${BucketNamePrefix}-${EnvironmentName}-${AWS::AccountId}
+      AccessControl: Private
+      VersioningConfiguration:
+        Status: Enabled
+      PublicAccessBlockConfiguration:
+        BlockPublicAcls: true
+        BlockPublicPolicy: true
+        IgnorePublicAcls: true
+        RestrictPublicBuckets: true
+      BucketEncryption:
+        ServerSideEncryptionConfiguration:
+          - ServerSideEncryptionByDefault:
+              SSEAlgorithm: AES256
+      Tags:
+        - Key: Name
+          Value: !Sub ${BucketNamePrefix}-${EnvironmentName}
+        - Key: Environment
+          Value: !Ref EnvironmentName
+        - Key: Project
+          Value: BlogApplication
+
+  # Bucket Policy to allow CloudFront access (to be added after CloudFront creation)
+  BucketPolicy:
+    Type: AWS::S3::BucketPolicy
+    Properties:
+      Bucket: !Ref BlogStaticBucket
+      PolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Sid: AllowCloudFrontServicePrincipal
+            Effect: Allow
+            Principal:
+              Service: cloudfront.amazonaws.com
+            Action: s3:GetObject
+            Resource: !Sub ${BlogStaticBucket.Arn}/*
+            Condition:
+              StringEquals:
+                AWS:SourceArn: !Sub arn:aws:cloudfront::${AWS::AccountId}:distribution/${CloudFrontDistribution}
+
+  # Lifecycle Rule for old versions
+  LifecycleRule:
+    Type: AWS::S3::BucketPolicy
+    DependsOn: BlogStaticBucket
+    Properties:
+      Bucket: !Ref BlogStaticBucket
+      LifecycleConfiguration:
+        Rules:
+          - Id: ExpireOldVersions
+            Status: Enabled
+            NoncurrentVersionExpiration:
+              NoncurrentDays: 30
+          - Id: TransitionToIA
+            Status: Enabled
+            Transitions:
+              - TransitionInDays: 90
+                StorageClass: STANDARD_IA
+
+  # S3 Bucket for Logs
+  LogsBucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketName: !Sub ${BucketNamePrefix}-logs-${EnvironmentName}-${AWS::AccountId}
+      AccessControl: LogDeliveryWrite
+      PublicAccessBlockConfiguration:
+        BlockPublicAcls: true
+        BlockPublicPolicy: true
+        IgnorePublicAcls: true
+        RestrictPublicBuckets: true
+      BucketEncryption:
+        ServerSideEncryptionConfiguration:
+          - ServerSideEncryptionByDefault:
+              SSEAlgorithm: AES256
+
+  # CloudFront Distribution
+  CloudFrontDistribution:
+    Type: AWS::CloudFront::Distribution
+    Properties:
+      DistributionConfig:
+        Enabled: true
+        DefaultRootObject: index.html
+        Origins:
+          - Id: S3Origin
+            DomainName: !GetAtt BlogStaticBucket.DomainName
+            S3OriginConfig:
+              OriginAccessIdentity: !Sub origin-access-identity/cloudfront/${CloudFrontOriginAccessIdentity}
+        DefaultCacheBehavior:
+          TargetOriginId: S3Origin
+          ViewerProtocolPolicy: redirect-to-https
+          CachePolicyId: 658327ea-f89d-4fab-a63d-7e88639e58f6 # CachingOptimized managed policy
+          AllowedMethods:
+            - GET
+            - HEAD
+            - OPTIONS
+          Compress: true
+        PriceClass: PriceClass_100 # US, Canada, Europe
+        ViewerCertificate:
+          CloudFrontDefaultCertificate: true
+        Logging:
+          Bucket: !GetAtt LogsBucket.DomainName
+          IncludeCookies: false
+          Prefix: cloudfront-logs/
+
+  # CloudFront Origin Access Identity
+  CloudFrontOriginAccessIdentity:
+    Type: AWS::CloudFront::CloudFrontOriginAccessIdentity
+    Properties:
+      CloudFrontOriginAccessIdentityConfig:
+        Comment: !Sub OAI for ${BlogStaticBucket}
+
+Outputs:
+  BucketName:
+    Description: Name of the S3 bucket
+    Value: !Ref BlogStaticBucket
+  
+  BucketARN:
+    Description: ARN of the S3 bucket
+    Value: !GetAtt BlogStaticBucket.Arn
+  
+  CloudFrontDomain:
+    Description: CloudFront distribution domain name
+    Value: !GetAtt CloudFrontDistribution.DomainName
+  
+  LogsBucketName:
+    Description: Name of the logs bucket
+    Value: !Ref LogsBucket
