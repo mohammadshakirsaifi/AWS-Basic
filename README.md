@@ -1,18 +1,11 @@
-Project Overview
-
+## Project Overview
 This repository contains the complete infrastructure and application code for deploying a scalable, secure, and monitored blog application on AWS.
-
 The implementation covers Tasks 1–8, demonstrating core AWS services using:
-
-Infrastructure as Code (IaC)
-
-AWS CLI automation
-
-DevOps best practices
-
-Security-first architecture
-
-High availability design
+- Infrastructure as Code (IaC)
+- AWS CLI automation
+- DevOps best practices
+- Security-first architecture
+- High availability design
 
 ## 🏗️ Architecture Components
 
