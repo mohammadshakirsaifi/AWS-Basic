@@ -21,7 +21,7 @@ The implementation covers Tasks 1–8, demonstrating core AWS services using:
 | Task 8 | Infrastructure as Code  | CloudFormation templates, AWS CLI                |
 
 ## 📁 Repository Structure
-``txt 
+```bash
 AWS-Basic/
 ├── cloudformation/
 │   ├── secure-s3-cf.yml
@@ -52,13 +52,13 @@ AWS-Basic/
 ├── kms/
 │   └── key-policy.json
 └── README.md
-``
+```
 ## 🚀 Features Implemented
 #### Task 1: AWS Account & IAM
 - MFA enabled for root and IAM users
 - IAM users created with least-privilege access
 - Custom IAM policies implemented
-``txt
+```bash
 # Create IAM user
 aws iam create-user --user-name blog-admin
 
@@ -72,13 +72,13 @@ aws iam create-virtual-mfa-device \
   --virtual-mfa-device-name blog-admin-mfa \
   --outfile /tmp/qrcode.png \
   --bootstrap-method QRCodePNG
-``
+```
 #### Task 2: Networking & Compute
 - Custom VPC with public/private subnets
 - Internet Gateway attached
 - EC2 instance with Apache/PHP
 - 2GB EBS volume mounted to /mnt/data
-``txt
+```bash
 # Create VPC
 aws ec2 create-vpc \
   --cidr-block 10.0.0.0/16 \
@@ -89,13 +89,12 @@ aws ec2 run-instances \
   --image-id ami-0c02fb55956c7d316 \
   --instance-type t2.micro \
   --user-data file://user-data.sh
-``
-
+```
 ##### Task 3: Scalability & Load Balancing
 - Application Load Balancer (Internet-facing)
 - Target group with health checks (port 80)
 - Cross-zone load balancing enabled
-``txt
+```bash
 # Create target group
 aws elbv2 create-target-group \
   --name blog-tg \
@@ -108,13 +107,13 @@ aws elbv2 create-load-balancer \
   --name blog-alb \
   --subnets subnet-xxxxxx1 subnet-xxxxxx2 \
   --security-groups sg-xxxxxx
-``
+```
 #### Task 4: Storage & Database
 - S3 Configuration
 - Versioning enabled
 - Default encryption (SSE-S3)
 - Public access blocked
-``txt
+```bash
 aws s3api create-bucket --bucket blog-static-assets --region us-east-1
 
 aws s3api put-bucket-versioning \
@@ -128,12 +127,12 @@ aws s3api put-bucket-encryption \
       "ApplyServerSideEncryptionByDefault":{"SSEAlgorithm":"AES256"}
     }]
   }'
-``
+```
 ## RDS MySQL
 - Automated backups (7 days)
 - Multi-AZ deployment
 - Restricted security group
-``bash
+```bash
 aws rds create-db-instance \
   --db-instance-identifier blog-db \
   --db-instance-class db.t3.micro \
@@ -141,13 +140,13 @@ aws rds create-db-instance \
   --master-username admin \
   --master-user-password password123 \
   --allocated-storage 20
-``
+```
 #### Task 5: Decoupling & Serverless
 - SNS topic for notifications
 - SQS queue for background tasks
 - Lambda function (Python image resizing)
 - Dead Letter Queue enabled
-``bash
+```bash
 aws sns create-topic --name Blog-Notifications
 aws sqs create-queue --queue-name Image-Processing-Queue
 aws lambda create-function \
@@ -156,20 +155,20 @@ aws lambda create-function \
   --role arn:aws:iam::account-id:role/lambda-role \
   --handler resize-image-function.lambda_handler \
   --zip-file fileb://lambda.zip
-``
+```
 #### Task 6: Domain & Global Delivery
 - Route 53 hosted zone
 - A-record alias to ALB
 - CloudFront CDN
 - HTTPS redirection enabled
-  ``bash
+```bash
 aws cloudfront create-distribution \
   --distribution-config file://distribution-config.json
 
 aws route53 change-resource-record-sets \
   --hosted-zone-id ZONE_ID \
   --change-batch file://route53-changes.json
-``
+```
 
 #### Task 7: Monitoring & Security
 - CloudWatch
@@ -177,7 +176,7 @@ aws route53 change-resource-record-sets \
 - 5XX error alarm
 - Custom dashboard
 - Log aggregation
-``bash
+```bash
 aws cloudwatch put-metric-alarm \
   --alarm-name High-CPU \
   --metric-name CPUUtilization \
@@ -187,13 +186,13 @@ aws cloudwatch put-metric-alarm \
   --threshold 80 \
   --comparison-operator GreaterThanThreshold \
   --dimensions Name=InstanceId,Value=i-xxxxxx
-``
+```
   #### KMS
-``bash
+```bash
 aws kms create-key \
   --description "Blog encryption key" \
   --tags TagKey=Name,TagValue=blog-key
-``
+```
 #### WAF
 - AWS managed rule sets (SQLi, XSS)
 - Rate-based rule (2000 req/IP)
@@ -205,13 +204,13 @@ aws kms create-key \
 - Git installed
 
 #### Step 1: Clone Repository
-``bash
+```bash
 git clone https://github.com/mohammadshakirsaifi/AWS-Basic.git
 cd AWS-Basic
-``
+```
 #### Step 2: Configure Environment
 scripts/deployment-config.env
-``txt
+```bash
 Example:
 
 export AWS_REGION="us-east-1"
@@ -222,13 +221,13 @@ export EC2_INSTANCE_ID="i-xxxxxx"
 export EC2_SG_ID="sg-xxxxxx"
 export DOMAIN_NAME="yourblog.com"
 export EMAIL_NOTIFICATIONS="admin@yourblog.com"
-``
+```
 #### Step 3: Deploy
-``bash
+```bash
 cd scripts
 chmod +x *.sh
 ./deploy-all.sh
-``
+```
 #### Monitoring Dashboard
 Access:
 https://console.aws.amazon.com/cloudwatch/home?region=us-east-1#dashboards:name=Blog-Application-Dashboard
@@ -245,10 +244,10 @@ https://console.aws.amazon.com/cloudwatch/home?region=us-east-1#dashboards:name=
 
 #### 🧹 Clean Up
 To avoid charges:
-``bash
+```bash
 cd scripts
 ./cleanup.sh
-``
+```
 Or manually delete:
 - CloudFormation stacks
 - S3 buckets
