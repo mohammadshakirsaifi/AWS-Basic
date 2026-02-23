@@ -1,8 +1,4 @@
 ## Project Overview
-https://img.shields.io/badge/AWS-%2523FF9900.svg?style=for-the-badge&logo=amazon-aws&logoColor=white
-https://img.shields.io/badge/CloudFormation-%2523FF9900.svg?style=for-the-badge&logo=amazon-aws&logoColor=white
-https://img.shields.io/badge/License-MIT-yellow.svg
-
 This repository contains the complete infrastructure and application code for deploying a scalable, secure, and monitored blog application on AWS. The implementation covers all required tasks from 1 to 8, demonstrating core AWS services following infrastructure as code (IaC) principles and DevOps best practices.
 
 ## 🏗️ Architecture Components
