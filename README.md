@@ -290,22 +290,25 @@ Or manually delete:
 <img width="1536" height="1024" alt="image" src="https://github.com/user-attachments/assets/0719702c-320c-4da1-8da0-de19a12a4e37" />
 
 - **task1-iam-mfa.png** → IAM Dashboard showing MFA enabled
-  <img width="1536" height="1024" alt="image" src="https://github.com/user-attachments/assets/36d24626-48ad-446f-bd7a-552b021916d1" />
+<img width="1536" height="1024" alt="image" src="https://github.com/user-attachments/assets/36d24626-48ad-446f-bd7a-552b021916d1" />
 
 - **task2-vpc-ec2.png** → VPC with EC2 instance running and public IP attached
-  <img width="1536" height="1024" alt="image" src="https://github.com/user-attachments/assets/d7ef0985-3a5e-4b2e-8c98-b561d925b956" />
+<img width="1536" height="1024" alt="image" src="https://github.com/user-attachments/assets/d7ef0985-3a5e-4b2e-8c98-b561d925b956" />
 
 - **task3-alb.png** → Application Load Balancer listeners and healthy target group
-  <img width="1536" height="1024" alt="image" src="https://github.com/user-attachments/assets/ed39c67a-d07b-4390-a065-9542709e249d" />
+<img width="1536" height="1024" alt="image" src="https://github.com/user-attachments/assets/ed39c67a-d07b-4390-a065-9542709e249d" />
 
 - **task4-s3-rds.png** → S3 bucket and RDS endpoint with database status
-- <img width="1536" height="1024" alt="image" src="https://github.com/user-attachments/assets/7ce42f90-a550-4066-94fa-adb54418a73c" />
+<img width="1536" height="1024" alt="image" src="https://github.com/user-attachments/assets/7ce42f90-a550-4066-94fa-adb54418a73c" />
   
 - **task5-sns-sqs-lambda.png** → SNS topic, SQS queue, and Lambda trigger
-- 
-- **task6-route53-cloudfront.png** → Route 53 hosted zone and CloudFront distribution  
-- **task7-cloudwatch-waf-kms.png** → CloudWatch alarm, WAF rule, and KMS key  
+  
+- **task6-route53-cloudfront.png** → Route 53 hosted zone and CloudFront distribution
+  
+- **task7-cloudwatch-waf-kms.png** → CloudWatch alarm, WAF rule, and KMS key
+   
 - **task8-cloudformation.png** → CloudFormation stack status: CREATE_COMPLETE
+  
 
  #### 📝 License
 Licensed under the MIT License.
