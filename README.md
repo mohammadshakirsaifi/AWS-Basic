@@ -303,15 +303,14 @@ Repository: AWS-Basic
 ## 📸 Screenshots
 <img width="1536" height="1024" alt="image" src="https://github.com/user-attachments/assets/3b2bbfbb-93e4-4743-8877-05381f783c8b" />
 
-| Task   | Screenshot Location                               |
-|--------|--------------------------------------------------|
-| Task 1 | screenshots/task1-iam-mfa.png                    |
-| Task 2 | screenshots/task2-vpc-ec2.png                    |
-| Task 3 | screenshots/task3-alb.png                        |
-| Task 4 | screenshots/task4-s3-rds.png                     |
-| Task 5 | screenshots/task5-sns-sqs-lambda.png            |
-| Task 6 | screenshots/task6-route53-cloudfront.png        |
-| Task 7 | screenshots/task7-cloudwatch-waf-kms.png        |
-| Task 8 | screenshots/task8-cloudformation.png            |
 
+screenshots/
+├── task1-iam-mfa.png              → IAM Dashboard showing MFA = Enabled
+├── task2-vpc-ec2.png              → VPC + EC2 instance running + public IP
+├── task3-alb.png                  → ALB listeners + target group healthy
+├── task4-s3-rds.png               → S3 bucket + RDS endpoint + DB status
+├── task5-sns-sqs-lambda.png       → SNS topic, SQS queue, Lambda trigger
+├── task6-route53-cloudfront.png   → Hosted zone + CloudFront distribution
+├── task7-cloudwatch-waf-kms.png   → Alarm, WAF rule, KMS key
+├── task8-cloudformation.png       → Stack CREATE_COMPLETE
 
