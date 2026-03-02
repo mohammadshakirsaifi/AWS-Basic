@@ -301,6 +301,7 @@ Repository: AWS-Basic
 - AWS Well-Architected Framework
 
 ## 📸 Screenshots
+<img width="1536" height="1024" alt="image" src="https://github.com/user-attachments/assets/3b2bbfbb-93e4-4743-8877-05381f783c8b" />
 
 | Task   | Screenshot Location                               |
 |--------|--------------------------------------------------|
