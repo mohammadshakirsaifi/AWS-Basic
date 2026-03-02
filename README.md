@@ -326,28 +326,4 @@ Task	Screenshot
 | Task 7 | screenshots/task7-cloudwatch-waf-kms.png        |
 | Task 8 | screenshots/task8-cloudformation.png            |
 
-Git Commands to Commit Everything
-```bash
-# Navigate to your repository
-cd /path/to/AWS-Basic
 
-# Add all files
-git add .
-
-# Commit with comprehensive message
-git commit -m "Complete AWS blog application deployment
-
-- Task 1: IAM setup with MFA and custom policies
-- Task 2: VPC networking with public subnets, EC2 with EBS
-- Task 3: ALB configuration with EC2 backend
-- Task 4: S3 storage with versioning/encryption, RDS MySQL
-- Task 5: SNS topics, SQS queues, Lambda image resizing
-- Task 6: Route 53 domain configuration, CloudFront CDN
-- Task 7: CloudWatch alarms/logs, WAF rules, KMS encryption
-- Task 8: CloudFormation templates, AWS CLI deployment scripts
-
-Full implementation of all 8 assignment tasks with production-ready code"
-
-# Push to GitHub
-git push origin main
-```
