@@ -286,8 +286,18 @@ Or manually delete:
 9. Release Elastic IPs
 10. Delete CloudWatch log groups
 
+## 📸 Screenshots
+<img width="1536" height="1024" alt="image" src="https://github.com/user-attachments/assets/3b2bbfbb-93e4-4743-8877-05381f783c8b" />
+- **task1-iam-mfa.png** → IAM Dashboard showing MFA enabled  
+- **task2-vpc-ec2.png** → VPC with EC2 instance running and public IP attached  
+- **task3-alb.png** → Application Load Balancer listeners and healthy target group  
+- **task4-s3-rds.png** → S3 bucket and RDS endpoint with database status  
+- **task5-sns-sqs-lambda.png** → SNS topic, SQS queue, and Lambda trigger  
+- **task6-route53-cloudfront.png** → Route 53 hosted zone and CloudFront distribution  
+- **task7-cloudwatch-waf-kms.png** → CloudWatch alarm, WAF rule, and KMS key  
+- **task8-cloudformation.png** → CloudFormation stack status: CREATE_COMPLETE
 
-#### 📝 License
+ #### 📝 License
 Licensed under the MIT License.
 
 ## 👤 Author
@@ -299,18 +309,3 @@ Repository: AWS-Basic
 - AWS Documentation
 - AWS CloudFormation User Guide
 - AWS Well-Architected Framework
-
-## 📸 Screenshots
-<img width="1536" height="1024" alt="image" src="https://github.com/user-attachments/assets/3b2bbfbb-93e4-4743-8877-05381f783c8b" />
-
-
-screenshots/
-├── task1-iam-mfa.png              → IAM Dashboard showing MFA = Enabled
-├── task2-vpc-ec2.png              → VPC + EC2 instance running + public IP
-├── task3-alb.png                  → ALB listeners + target group healthy
-├── task4-s3-rds.png               → S3 bucket + RDS endpoint + DB status
-├── task5-sns-sqs-lambda.png       → SNS topic, SQS queue, Lambda trigger
-├── task6-route53-cloudfront.png   → Hosted zone + CloudFront distribution
-├── task7-cloudwatch-waf-kms.png   → Alarm, WAF rule, KMS key
-├── task8-cloudformation.png       → Stack CREATE_COMPLETE
-
