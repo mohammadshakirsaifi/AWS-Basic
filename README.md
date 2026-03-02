@@ -300,19 +300,6 @@ Repository: AWS-Basic
 - AWS CloudFormation User Guide
 - AWS Well-Architected Framework
 
-#### 📸 Screenshots
-Task	Screenshot
-- Task 1	screenshots/task1-iam-mfa.png
-- Task 2	screenshots/task2-vpc-ec2.png
-- Task 3	screenshots/task3-alb.png
-- Task 4	screenshots/task4-s3-rds.png
-- Task 5	screenshots/task5-sns-sqs-lambda.png
-- Task 6	screenshots/task6-route53-cloudfront.png
-- Task 7	screenshots/task7-cloudwatch-waf-kms.png
-- Task 8	screenshots/task8-cloudformation.png
-
-
-
 ## 📸 Screenshots
 
 | Task   | Screenshot Location                               |
