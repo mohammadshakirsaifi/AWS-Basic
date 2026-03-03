@@ -289,13 +289,13 @@ Or manually delete:
 ## 📸 Screenshots
 <img width="1536" height="1024" alt="image" src="https://github.com/user-attachments/assets/0719702c-320c-4da1-8da0-de19a12a4e37" />
 
-**Task1-iam-mfa.png** → **IAM Dashboard showing MFA enabled**
+**Task1-IAM-MFA** → **IAM Dashboard showing MFA enabled**
 <img width="1536" height="1024" alt="image" src="https://github.com/user-attachments/assets/36d24626-48ad-446f-bd7a-552b021916d1" />
 
-**Task2-vpc-ec2.png** → **VPC with EC2 instance running and public IP attached**
+**Task2-VPC-EC2** → **VPC with EC2 instance running and public IP attached**
 <img width="1536" height="1024" alt="image" src="https://github.com/user-attachments/assets/d7ef0985-3a5e-4b2e-8c98-b561d925b956" />
 
-**Task3-alb.png** → **Application Load Balancer listeners and healthy target group**
+**Task3-ALB** → **Application Load Balancer listeners and healthy target group**
 <img width="1536" height="1024" alt="image" src="https://github.com/user-attachments/assets/ed39c67a-d07b-4390-a065-9542709e249d" />
 
 **Task4-S3-RDS** → **S3 bucket and RDS endpoint with database status**
