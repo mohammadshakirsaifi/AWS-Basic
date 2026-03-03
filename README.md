@@ -298,10 +298,10 @@ Or manually delete:
 **Task3-alb.png** → **Application Load Balancer listeners and healthy target group**
 <img width="1536" height="1024" alt="image" src="https://github.com/user-attachments/assets/ed39c67a-d07b-4390-a065-9542709e249d" />
 
-**Task4-s3-rds.png** → **S3 bucket and RDS endpoint with database status**
+**Task4-S3-RDS** → **S3 bucket and RDS endpoint with database status**
 <img width="1536" height="1024" alt="image" src="https://github.com/user-attachments/assets/7ce42f90-a550-4066-94fa-adb54418a73c" />
 
-**Task5-SNS-SQS-Lambda.png** → **SNS topic, SQS queue, and Lambda trigger**
+**Task5-SNS-SQS-Lambda** → **SNS topic, SQS queue, and Lambda trigger**
 **SNS topic created (post notifications)**
   <img width="1536" height="1024" alt="image" src="https://github.com/user-attachments/assets/a003d8f7-e8f7-4211-8255-353e487b6189" />
 **SQS queue (background tasks)**
@@ -309,7 +309,7 @@ Or manually delete:
 **Lambda + S3 trigger (image resize)**
 <img width="1536" height="1024" alt="image" src="https://github.com/user-attachments/assets/88fd2f99-46bf-4fa8-81e4-659a140cb297" />
 
-**Task6-route53-cloudfront.png** → **Route 53 hosted zone and CloudFront distribution**
+**Task6-Route53-CloudFront** → **Route 53 hosted zone and CloudFront distribution**
 **Domain registered in Route 53 (Hosted Zone)**
   <img width="1536" height="1024" alt="image" src="https://github.com/user-attachments/assets/d5023213-a500-4dd5-bb2d-d17dcdd40c99" />
 **Record (A/AAAA) alias pointing to ALB**
@@ -317,7 +317,7 @@ Or manually delete:
 **CloudFront distribution with S3 origin**
   <img width="1536" height="1024" alt="image" src="https://github.com/user-attachments/assets/e4c4e547-c185-45a8-b8d3-207fe11dda24" />
 
-**Task7-cloudwatch-waf-kms.png** → **CloudWatch alarm, WAF rule, and KMS key**
+**Task7-CloudWatch-WAF-KMS** → **CloudWatch alarm, WAF rule, and KMS key**
 **CloudWatch alarm + log group enabled**
   <img width="1536" height="1024" alt="image" src="https://github.com/user-attachments/assets/e92dfc4c-a27a-4243-b9ca-173cdcf1498a" />
 **AWS WAF Web ACL associated with ALB**
@@ -325,7 +325,7 @@ Or manually delete:
 **KMS key + S3/RDS encryption enabled**
   <img width="1536" height="1024" alt="image" src="https://github.com/user-attachments/assets/bfcdfd9a-ed22-47f0-bca0-ea39355b39fd" />
 
-**Task8-cloudformation.png** → **CloudFormation stack status: CREATE_COMPLETE**
+**Task8-CloudFormation** → **CloudFormation stack status: CREATE_COMPLETE**
   <img width="1536" height="1024" alt="image" src="https://github.com/user-attachments/assets/50c572ae-1432-4bd2-adb5-beceab84232f" />
 ###### SSE-S3 (AES256) version
 ```txt
