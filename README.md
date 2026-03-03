@@ -302,14 +302,66 @@ Or manually delete:
 <img width="1536" height="1024" alt="image" src="https://github.com/user-attachments/assets/7ce42f90-a550-4066-94fa-adb54418a73c" />
   
 - **task5-sns-sqs-lambda.png** → SNS topic, SQS queue, and Lambda trigger
-  
+  SNS topic created (post notifications)
+  <img width="1536" height="1024" alt="image" src="https://github.com/user-attachments/assets/a003d8f7-e8f7-4211-8255-353e487b6189" />
+SQS queue (background tasks)
+<img width="1536" height="1024" alt="image" src="https://github.com/user-attachments/assets/9fd4a59e-cf77-4164-a94c-173637b5c42a" />
+Lambda + S3 trigger (image resize)
+<img width="1536" height="1024" alt="image" src="https://github.com/user-attachments/assets/88fd2f99-46bf-4fa8-81e4-659a140cb297" />
 - **task6-route53-cloudfront.png** → Route 53 hosted zone and CloudFront distribution
-  
-- **task7-cloudwatch-waf-kms.png** → CloudWatch alarm, WAF rule, and KMS key
-   
-- **task8-cloudformation.png** → CloudFormation stack status: CREATE_COMPLETE
-  
+  Domain registered in Route 53 (Hosted Zone)
+  <img width="1536" height="1024" alt="image" src="https://github.com/user-attachments/assets/d5023213-a500-4dd5-bb2d-d17dcdd40c99" />
+  Record (A/AAAA) alias pointing to ALB
+  <img width="1536" height="1024" alt="image" src="https://github.com/user-attachments/assets/7d552ad9-253a-4a0d-83d9-1a1241896015" />
+  CloudFront distribution with S3 origin
+  <img width="1536" height="1024" alt="image" src="https://github.com/user-attachments/assets/e4c4e547-c185-45a8-b8d3-207fe11dda24" />
 
+- **task7-cloudwatch-waf-kms.png** → CloudWatch alarm, WAF rule, and KMS key
+  CloudWatch alarm + log group enabled
+  <img width="1536" height="1024" alt="image" src="https://github.com/user-attachments/assets/e92dfc4c-a27a-4243-b9ca-173cdcf1498a" />
+  AWS WAF Web ACL associated with ALB
+  <img width="1536" height="1024" alt="image" src="https://github.com/user-attachments/assets/4f24aee2-0ab9-41e7-b219-8e2f6bd06d47" />
+  KMS key + S3/RDS encryption enabled
+  <img width="1536" height="1024" alt="image" src="https://github.com/user-attachments/assets/bfcdfd9a-ed22-47f0-bca0-ea39355b39fd" />
+- **task8-cloudformation.png** → CloudFormation stack status: CREATE_COMPLETE
+  <img width="1536" height="1024" alt="image" src="https://github.com/user-attachments/assets/50c572ae-1432-4bd2-adb5-beceab84232f" />
+###### SSE-S3 (AES256) version
+```txt
+AWSTemplateFormatVersion: '2010-09-09'
+Description: S3 bucket with versioning and SSE-S3 encryption
+
+Resources:
+  BlogBucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketName: blog-static-assets-demo
+      VersioningConfiguration:
+        Status: Enabled
+      BucketEncryption:
+        ServerSideEncryptionConfiguration:
+          - ServerSideEncryptionByDefault:
+              SSEAlgorithm: AES256
+```
+###### KMS-managed keys (SSE-KMS) version
+- Uses the AWS-managed key for S3 (aws/s3). To use your own CMK, replace KMSMasterKeyID with your key ARN or ID.
+```txt
+AWSTemplateFormatVersion: '2010-09-09'
+Description: S3 bucket with versioning and SSE-KMS encryption
+
+Resources:
+  BlogBucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketName: blog-static-assets-demo
+      VersioningConfiguration:
+        Status: Enabled
+      BucketEncryption:
+        ServerSideEncryptionConfiguration:
+          - ServerSideEncryptionByDefault:
+              SSEAlgorithm: aws:kms
+              KMSMasterKeyID: alias/aws/s3   # or arn:aws:kms:region:acct:key/uuid
+```
+ 
  #### 📝 License
 Licensed under the MIT License.
 
