@@ -288,16 +288,16 @@ Or manually delete:
 
 ## 📸 Screenshots
 <img width="1536" height="1024" alt="image" src="https://github.com/user-attachments/assets/0719702c-320c-4da1-8da0-de19a12a4e37" />
-**task1-iam-mfa.png** → IAM Dashboard showing MFA enabled
+**Task1-iam-mfa.png** → **IAM Dashboard showing MFA enabled**
 <img width="1536" height="1024" alt="image" src="https://github.com/user-attachments/assets/36d24626-48ad-446f-bd7a-552b021916d1" />
-**task2-vpc-ec2.png** → VPC with EC2 instance running and public IP attached
+**Task2-vpc-ec2.png** → **VPC with EC2 instance running and public IP attached**
 <img width="1536" height="1024" alt="image" src="https://github.com/user-attachments/assets/d7ef0985-3a5e-4b2e-8c98-b561d925b956" />
-**task3-alb.png** → Application Load Balancer listeners and healthy target group
+**Task3-alb.png** → **Application Load Balancer listeners and healthy target group**
 <img width="1536" height="1024" alt="image" src="https://github.com/user-attachments/assets/ed39c67a-d07b-4390-a065-9542709e249d" />
-**task4-s3-rds.png** → S3 bucket and RDS endpoint with database status
+**Task4-s3-rds.png** → **S3 bucket and RDS endpoint with database status**
 <img width="1536" height="1024" alt="image" src="https://github.com/user-attachments/assets/7ce42f90-a550-4066-94fa-adb54418a73c" />
 
-**task5-sns-sqs-lambda.png** → SNS topic, SQS queue, and Lambda trigger
+**Task5-SNS-SQS-Lambda.png** → **SNS topic, SQS queue, and Lambda trigger**
 **SNS topic created (post notifications)**
   <img width="1536" height="1024" alt="image" src="https://github.com/user-attachments/assets/a003d8f7-e8f7-4211-8255-353e487b6189" />
 **SQS queue (background tasks)**
@@ -305,7 +305,7 @@ Or manually delete:
 **Lambda + S3 trigger (image resize)**
 <img width="1536" height="1024" alt="image" src="https://github.com/user-attachments/assets/88fd2f99-46bf-4fa8-81e4-659a140cb297" />
 
-**task6-route53-cloudfront.png** → Route 53 hosted zone and CloudFront distribution
+**Task6-route53-cloudfront.png** → **Route 53 hosted zone and CloudFront distribution**
 **Domain registered in Route 53 (Hosted Zone)**
   <img width="1536" height="1024" alt="image" src="https://github.com/user-attachments/assets/d5023213-a500-4dd5-bb2d-d17dcdd40c99" />
 **Record (A/AAAA) alias pointing to ALB**
@@ -313,15 +313,15 @@ Or manually delete:
 **CloudFront distribution with S3 origin**
   <img width="1536" height="1024" alt="image" src="https://github.com/user-attachments/assets/e4c4e547-c185-45a8-b8d3-207fe11dda24" />
 
-**task7-cloudwatch-waf-kms.png** → CloudWatch alarm, WAF rule, and KMS key
-  - CloudWatch alarm + log group enabled
+**Task7-cloudwatch-waf-kms.png** → **CloudWatch alarm, WAF rule, and KMS key**
+**CloudWatch alarm + log group enabled**
   <img width="1536" height="1024" alt="image" src="https://github.com/user-attachments/assets/e92dfc4c-a27a-4243-b9ca-173cdcf1498a" />
-  - AWS WAF Web ACL associated with ALB
+**AWS WAF Web ACL associated with ALB**
   <img width="1536" height="1024" alt="image" src="https://github.com/user-attachments/assets/4f24aee2-0ab9-41e7-b219-8e2f6bd06d47" />
-  - KMS key + S3/RDS encryption enabled
+**KMS key + S3/RDS encryption enabled**
   <img width="1536" height="1024" alt="image" src="https://github.com/user-attachments/assets/bfcdfd9a-ed22-47f0-bca0-ea39355b39fd" />
 
-**task8-cloudformation.png** → CloudFormation stack status: CREATE_COMPLETE
+**Task8-cloudformation.png** → **CloudFormation stack status: CREATE_COMPLETE**
   <img width="1536" height="1024" alt="image" src="https://github.com/user-attachments/assets/50c572ae-1432-4bd2-adb5-beceab84232f" />
 ###### SSE-S3 (AES256) version
 ```txt
